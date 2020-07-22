@@ -24,7 +24,7 @@ cloudinary.config({
 });
 
 // connect db
-mongoose.connect(process.env.DATABASE_LOCAL, {
+mongoose.connect(process.env.DATABASE_REMOTE, {
   useNewUrlParser: true,
   useFindAndModify: false,
   useUnifiedTopology: true,

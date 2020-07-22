@@ -33,3 +33,12 @@
 ## Features to be added later
 - Templates (Users can select different templates for memorial page)
 - Video and Audio (The memorial page can also have a video and audio section for the death.)
+
+# Todo
+The two 
+tributes: {
+    type: [String],
+  },
+gallery: {
+    type: [String],
+  },

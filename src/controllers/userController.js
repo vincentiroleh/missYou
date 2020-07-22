@@ -40,7 +40,7 @@ class UserController {
       }
       return req.logIn(user, { session: false }, (error) => {
         if (error) { return next(err); }
-        const token = jwt.sign({ user }, 'someSecretKey', { expiresIn: '24h' });
+        const token = jwt.sign({ user }, process.env.SECRET, { expiresIn: '168h' });
         return res.status(200).json({
           status: 200,
           message: 'Authenticated',
