@@ -2,6 +2,16 @@
 /* eslint-disable consistent-return */
 const jwt = require('jsonwebtoken');
 
+function isAuthUser(req, res, next) {
+  if (req.isAuthenticated()) {
+    next();
+  }
+  return res.status(401).send({
+    status: 401,
+    message: 'Authorization required',
+  });
+}
+
 function isAdmin(req, res, next) {
   const user = req.user;
   if (user.role === 'Admin') {
@@ -50,6 +60,7 @@ function verifyToken(req, res, next) {
 }
 
 module.exports = {
+  isAuthUser,
   isAdmin,
   isClient,
   verifyToken,

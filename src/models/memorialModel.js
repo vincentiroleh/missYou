@@ -1,6 +1,17 @@
 const mongoose = require('mongoose');
+const moment = require('moment');
 
-const memorialSchema = mongoose.schema({
+const gallerySchema = new mongoose.Schema({
+  photos: [],
+  videos: [],
+  audios: [],
+  createdAt: {
+    type: String,
+    default: () => moment().format('Do MMMM YYYY'),
+  },
+});
+
+const memorialSchema = new mongoose.Schema({
   firstname: {
     type: String,
     required: true,
@@ -21,18 +32,8 @@ const memorialSchema = mongoose.schema({
     required: true,
     trim: true,
   },
-  dayOfBirth: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  monthOfBirth: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  yearOfBirth: {
-    type: String,
+  dateOfBirth: {
+    type: Date,
     required: true,
     trim: true,
   },
@@ -51,18 +52,8 @@ const memorialSchema = mongoose.schema({
     required: true,
     trim: true,
   },
-  dayOfDeath: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  monthOfDeath: {
-    type: String,
-    required: true,
-    trim: true,
-  },
-  yearOfDeath: {
-    type: String,
+  dateOfDeath: {
+    type: Date,
     required: true,
     trim: true,
   },
@@ -90,6 +81,25 @@ const memorialSchema = mongoose.schema({
     type: String,
     required: true,
     trim: true,
+  },
+  image: {
+    type: String,
+    required: true,
+  },
+  about: {
+    type: String,
+    required: true,
+  },
+  biography: {
+    type: String,
+    required: true,
+  },
+  tributes: [String],
+  gallery: [gallerySchema],
+  user: {
+    type: mongoose.Schema.Types.ObjectId,
+    ref: 'User',
+    required: true,
   },
 });
 
