@@ -80,6 +80,7 @@ const memorialSchema = new mongoose.Schema({
   webAddress: {
     type: String,
     required: true,
+    unique: true,
     trim: true,
   },
   image: {

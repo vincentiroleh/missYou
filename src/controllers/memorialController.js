@@ -42,8 +42,8 @@ class memorialController {
   }
 
   static getMemorial(req, res) {
-    const webAddress = { webAddress: req.params.webAddress };
-    Memorial.findOne(webAddress)
+    const id = { _id: req.params.id };
+    Memorial.findOne(id)
       .populate('user')
       .then((memorial) => {
         res.status(200).json({
@@ -77,17 +77,17 @@ class memorialController {
   }
 
   static updateMemorial(req, res) {
-    const id = { _id: req.body.id };
-    const value = { ...req.body, user: id, image: req.file.path };
+    const id = { _id: req.params.id };
+    const value = { ...req.body, image: req.file.path };
     Memorial.updateOne(id, {
       $set: value,
     })
       .then(() => res.status(200).json({
         status: 200,
-        message: 'Details updated successfully',
+        message: 'Memorial Page updated successfully',
       }))
-      .catch((err) => res.status(400).json({
-        status: 400,
+      .catch((err) => res.status(404).json({
+        status: 404,
         message: err.message,
       }));
   }
