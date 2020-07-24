@@ -50,5 +50,12 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 app.use(Router);
 
+app.get('/', (req, res) => {
+  res.status(200).json({
+    status: 200,
+    message: 'API checked ✅',
+  });
+});
+
 const port = process.env.PORT || 9000;
 app.listen(port, () => console.log(`Server running on http://localhost:${port}`));
