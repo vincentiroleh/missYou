@@ -7,8 +7,8 @@ function isAuthUser(req, res, next) {
     next();
   }
   return res.status(401).send({
-    status: 401,
-    message: 'Authorization required',
+    status : 401,
+    message : 'Authorization required',
   });
 }
 
@@ -18,8 +18,8 @@ function isAdmin(req, res, next) {
     next();
   } else {
     return res.status(401).send({
-      status: 401,
-      message: 'Authorization required',
+      status : 401,
+      message : 'Authorization required',
     });
   }
 }
@@ -31,8 +31,8 @@ function isClient(req, res, next) {
     next();
   } else {
     return res.status(401).send({
-      status: 401,
-      message: 'Authorization required',
+      status : 401,
+      message : 'Authorization required',
     });
   }
 }
@@ -41,8 +41,8 @@ function verifyToken(req, res, next) {
   let token = req.headers.authorization;
   if (!token) {
     return res.status(403).json({
-      auth: false,
-      error: 'No token provided',
+      auth : false,
+      error : 'No token provided',
     });
   }
   token = token.split(' ')[1];
@@ -50,8 +50,8 @@ function verifyToken(req, res, next) {
   jwt.verify(token, process.env.SECRET, (err, decoded) => {
     if (err) {
       return res.status(401).json({
-        auth: false,
-        message: 'Failed to authenticated token',
+        auth : false,
+        message : 'Failed to authenticated token',
       });
     }
     req.user = decoded.user;
