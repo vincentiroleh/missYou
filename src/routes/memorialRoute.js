@@ -9,11 +9,11 @@ memorialRoute.post(`${authUrl}create-memorial`, verifyToken,
   parser().single('image'), memorialController.createMemorial);
 
 memorialRoute.get(`${authUrl}memorials`, verifyToken, memorialController.getMemorials);
-memorialRoute.get(`${authUrl}memorial`, verifyToken, memorialController.getMemorial);
+memorialRoute.get(`${authUrl}memorial/:id`, verifyToken, memorialController.getMemorial);
 memorialRoute.get(`${authUrl}user-memorials`, verifyToken, memorialController.getUserMemorials);
 
-memorialRoute.put(`${authUrl}update-memorial`, verifyToken,
-  parser().single('image'), memorialController.getMemorials);
+memorialRoute.put(`${authUrl}update-memorial/:id`, verifyToken,
+  parser().single('image'), memorialController.updateMemorial);
 
 memorialRoute.delete(`${authUrl}delete-memorial`, verifyToken, memorialController.deleteMemorial);
 
