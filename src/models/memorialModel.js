@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
-const moment = require("moment");
+const mongoose = require('mongoose');
+const moment = require('moment');
 
 const gallerySchema = new mongoose.Schema({
   photos: [],
@@ -7,7 +7,7 @@ const gallerySchema = new mongoose.Schema({
   audios: [],
   createdAt: {
     type: String,
-    default: () => moment().format("Do MMMM YYYY"),
+    default: () => moment().format('Do MMMM YYYY'),
   },
 });
 
@@ -99,11 +99,11 @@ const memorialSchema = new mongoose.Schema({
   gallery: [gallerySchema],
   user: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: "User",
+    ref: 'User',
     required: true,
   },
 });
 
-const Memorial = mongoose.model("Memorial", memorialSchema);
+const Memorial = mongoose.model('Memorial', memorialSchema);
 
 module.exports = Memorial;
