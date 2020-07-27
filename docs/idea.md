@@ -25,18 +25,20 @@
 
 ## More details about the lost one
 
-- About section (Tell about the memorial page and the loved ones who has created
-  this on behalf of their lost loved one)
+- About section (Tell about the memorial page and the loved ones who has created this on behalf of their lost loved one)
 - Life section (An biography of your loved one's life)
 - Gallery (Photos of the death while on earth)
 - Stories (Stories / tributes from friends and family of the death)
 
 ## Features to be added later
-
 - Templates (Users can select different templates for memorial page)
-- Video and Audio (The memorial page can also have a video and audio section for
-  the death.)
+- Video and Audio (The memorial page can also have a video and audio section for the death.)
 
 # Todo
-
-The two tributes: { type: [String], }, gallery: { type: [String], },
+The two 
+tributes: {
+    type: [String],
+  },
+gallery: {
+    type: [String],
+  },
