@@ -1,42 +1,89 @@
-# User Stories
+# Memorial Web Application
 
-- User can signup
-- Auth User can login
-- Auth User can create a memorial page for their lost one
-- User (anyone) can share memorial page
+## Core Features 
 
-# Create a Memorial Page Stories
+- Authentication and authorization
+- Memorial page creation
+- Memorial page template
+- Memorial page sharing
+- Notification
 
-- First Name
-- Last Name
-- Gender (Male OR Female)
-- Relationship with the User creating the page
-- Special designation, if applies (example: COVID-19 Victim, Military veteran)
-- memorial web address
 
-## Born and Passed away details
+# Users
 
-- Month of birth
-- Day of birth
-- Year of birth
-- Country
-- State
-- City or town
+This application would have three types of users:
 
-## More details about the lost one
+- **The Customer**
+- **Guests**
+- **The Admin**
 
-- About section (Tell about the memorial page and the loved ones who has created
-  this on behalf of their lost loved one)
-- Life section (An biography of your loved one's life)
-- Gallery (Photos of the death while on earth)
-- Stories (Stories / tributes from friends and family of the death)
+**Functional Requirements (Customer)**
 
-## Features to be added later
+- Customer should be able to sign up with name and email. (reCAPTCHA integration required)
+- Customer should be able to set a password.
+- Customer should be able to log in with email and password.
+- Customer should be able to create a memorial web page for their deceased loved ones.
+- Customer should be able to share memorial page to their social networks.
+- Customer should be able to donate 💰 (Payment integration required)
+- Customer should be able to receive a welcoming mail on registration
+- Customer should be able to receive a mail on every tribute or photo added by guests on the memorial page the created
 
-- Templates (Users can select different templates for memorial page)
-- Video and Audio (The memorial page can also have a video and audio section for
-  the death.)
+**Functional Requirements (Guests)**
 
-# Todo
+- Guests should be able to add tribute to a memorial page (reCAPTCHA integration required)
+- Guests should be able to add photos to a memorial page (reCAPTCHA integration required)
 
-The two tributes: { type: [String], }, gallery: { type: [String], },
+**Functional Requirements (Admin)**
+
+- The admin should be to login with email and password
+- The admin should be able to see number of users on the platform
+- The admin should be able to see number of memorial web pages created on the platform
+- The admin should be able to see countries with number of memorial pages from the platform
+- The admin should be able to delete unsolicited message (spam) tributes or photos on memorial web page
+
+## DATA MODELS
+
+**CUSTOMER COLLECTION**
+
+```bash
+- name
+- email
+- password
+```
+
+**MEMORIAL COLLECTION**
+
+```bash
+
+- firstname
+- lastname
+- gender        #(example: Male or Female)
+- relationship #(dropdown with list relationship options)
+- dateOfBirth
+- countryOfBirth #(dropdown with list country options)
+- stateOfBirth #(dropdown with list state options base on the country selected)
+- cityOfBirth
+- dateOfDeath
+- countryOfDeath #(dropdown with list country options)
+- stateOfDeath #(dropdown with list state options base on the country selected)
+- cityOfDeath
+- specialDesignation #(example: COVID-19 Victim, Military veteran)
+- webAddress
+- image 
+- about 
+- biography
+- tributes: [String],        #not required on while creating memorial page
+- gallery: [gallerySchema], #not required on while creating memorial page
+- user: { ref: 'User'},    #user's id
+
+```
+
+```bash
+# gallerySchema
+
+- photos: [String],
+- videos: [String],
+- audios: [String],
+- createdAt,
+
+```
