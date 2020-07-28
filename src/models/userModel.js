@@ -15,6 +15,9 @@ const userSchema = new mongoose.Schema({
     type: String,
     select: false,
   },
+  donation: {
+    type: Number,
+  },
   role: {
     type: String,
     default: 'Client',
