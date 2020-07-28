@@ -36,7 +36,7 @@ memorialRoute.put(
 );
 
 memorialRoute.delete(
-  `${authUrl}delete-memorial`,
+  `${authUrl}delete-memorial/:id`,
   verifyToken,
   memorialController.deleteMemorial,
 );

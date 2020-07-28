@@ -21,7 +21,7 @@ class UserController {
       return passport.authenticate('local')(req, res, () => res.status(200).json({
         status: 200,
         message: 'Account created successfully',
-        data: userData,
+        user: userData,
       }));
     });
   }
