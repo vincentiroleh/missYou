@@ -13,7 +13,11 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
+    required: true,
     select: false,
+  },
+  donation: {
+    type: Number,
   },
   role: {
     type: String,
