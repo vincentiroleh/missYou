@@ -49,6 +49,7 @@ This application would have three types of users:
 - name
 - email
 - password
+- donation
 ```
 
 **MEMORIAL COLLECTION**
