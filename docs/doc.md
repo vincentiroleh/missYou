@@ -52,7 +52,7 @@ Represents user details.
 ```bash
 {
   "status": Number,
-  "message": "error message",
+  "error": "error message",
 }
 ```
 
@@ -406,6 +406,36 @@ Represents user details.
 {
   "status": 200,
   "message": "Memorial page removed successfully"
+}
+
+```
+
+**Add multiple photos to a Memorial:**
+
+Doesn't need Authorization, because guests can perform this operation, for security checks, please enable to use [Google reCAPTCHA integration](https://developers.google.com/recaptcha/intro)
+
+`PUT` `/api/v1/auth/update-photos/id`
+
+**Request**
+
+
+*PARAMS*
+
+```bash
+{
+    "id": Number  # memorial id your wish to add photos
+}
+```
+
+
+
+*RESPONSE*
+
+```bash
+{
+  "status": 200,
+  "message": "Photo added successfully",
+  "photos": [String]
 }
 
 ```
