@@ -1,16 +1,6 @@
 const mongoose = require('mongoose');
 const moment = require('moment');
 
-const gallerySchema = new mongoose.Schema({
-  photos: [],
-  videos: [],
-  audios: [],
-  createdAt: {
-    type: String,
-    default: () => moment().format('Do MMMM YYYY'),
-  },
-});
-
 const memorialSchema = new mongoose.Schema({
   firstname: {
     type: String,
@@ -95,8 +85,14 @@ const memorialSchema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  tributes: [String],
-  gallery: [gallerySchema],
+  photos: [],
+  videos: [],
+  audios: [],
+  tributes: [],
+  createdAt: {
+    type: String,
+    default: () => moment().format('Do MMMM YYYY'),
+  },
   user: {
     type: mongoose.Schema.Types.ObjectId,
     ref: 'User',

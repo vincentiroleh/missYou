@@ -1,3 +1,4 @@
+/* eslint-disable no-param-reassign */
 /* eslint-disable no-underscore-dangle */
 const Memorial = require('../models/memorialModel');
 const User = require('../models/userModel');
@@ -104,6 +105,25 @@ class memorialController {
       .catch((err) => res.status(400).json({
         status: 400,
         message: err.message,
+      }));
+  }
+
+  static updateTribute(req, res) {
+    const id = { _id: req.params.id };
+    const values = { ...req.body, tributes: req.body.tribute };
+    Memorial.findOne(id)
+      .then((memorial) => {
+        const newTribute = values.tribute;
+        memorial.tributes.push(newTribute);
+        memorial.save(memorial);
+        res.status(200).json({
+          status: 200,
+          message: 'Tribute added successfully',
+          tribute: memorial.tributes,
+        });
+      }).catch((err) => res.status(400).json({
+        status: 400,
+        error: err.message,
       }));
   }
 }

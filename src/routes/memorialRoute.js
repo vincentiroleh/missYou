@@ -2,6 +2,7 @@ const memorialRoute = require('express').Router();
 const { verifyToken } = require('../middleware/AuthUser');
 const parser = require('../helpers/cloudinary');
 const memorialController = require('../controllers/memorialController');
+const galleryController = require('../controllers/galleryController');
 
 const authUrl = '/api/v1/auth/';
 
@@ -40,5 +41,14 @@ memorialRoute.delete(
   verifyToken,
   memorialController.deleteMemorial,
 );
+
+// update photos of a memorial
+memorialRoute.put(`${authUrl}update-photos/:id`,
+  parser().any('photos'),
+  galleryController.updatePhotos);
+
+// update tribute of a memorial
+memorialRoute.put(`${authUrl}update-tributes/:id`,
+  memorialController.updateTribute);
 
 module.exports = memorialRoute;

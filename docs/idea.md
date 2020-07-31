@@ -32,6 +32,8 @@ This application would have three types of users:
 
 - Guests should be able to add tribute to a memorial page (reCAPTCHA integration required)
 - Guests should be able to add photos to a memorial page (reCAPTCHA integration required)
+- Guests should be able to add audio to a memorial page (reCAPTCHA integration required)
+- Guests should be able to add video to a memorial page (reCAPTCHA integration required)
 
 **Functional Requirements (Admin)**
 
