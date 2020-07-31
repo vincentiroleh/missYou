@@ -416,6 +416,8 @@ Doesn't need Authorization, because guests can perform this operation, for secur
 
 `PUT` `/api/v1/auth/update-photos/id`
 
+`Content-Type:` multipart/form-data
+
 **Request**
 
 
@@ -427,6 +429,14 @@ Doesn't need Authorization, because guests can perform this operation, for secur
 }
 ```
 
+*BODY*
+
+```bash
+{
+  "photos" : File # multiple photos allowed
+}
+
+```
 
 
 *RESPONSE*
@@ -436,6 +446,46 @@ Doesn't need Authorization, because guests can perform this operation, for secur
   "status": 200,
   "message": "Photo added successfully",
   "photos": [String]
+}
+
+```
+
+**Add multiple tributes to a Memorial:**
+
+Doesn't need Authorization, because guests can perform this operation, for security checks, please enable to use [Google reCAPTCHA integration](https://developers.google.com/recaptcha/intro)
+
+`PUT` `/api/v1/auth/update-tributes/id`
+
+`Content-Type:` multipart/form-data
+
+**Request**
+
+
+*PARAMS*
+
+```bash
+{
+    "id": Number  # memorial id your wish to add photos
+}
+```
+
+*BODY*
+
+```bash
+{
+  "tribute" : "String" # multiple photos allowed
+}
+
+```
+
+
+*RESPONSE*
+
+```bash
+{
+  "status": 200,
+  "message": "Tribute added successfully",
+  "tributes": [String]
 }
 
 ```
