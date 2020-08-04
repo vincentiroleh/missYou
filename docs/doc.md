@@ -28,6 +28,8 @@ API documentation for missYou project
 
 All URLs referenced in the documentation have the following base:
 
+`https://missyou-api.herokuapp.com`  **Active ✅**
+
 `https://missyou-api.azurewebsites.net`
 
 The missYou REST API is served over HTTPS To ensure data privacy, un-encrypted HTTP is not supported.

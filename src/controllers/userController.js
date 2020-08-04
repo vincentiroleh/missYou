@@ -1,6 +1,6 @@
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
-const Auth0Strategy = require('passport-auth0');
+// const Auth0Strategy = require('passport-auth0');
 const User = require('../models/userModel');
 
 class UserController {
