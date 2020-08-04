@@ -87,10 +87,7 @@ Represents user details.
 {
   "status": 200,
   "message": "Account created successfully",
-  "user": {
-    "name": "Vincent Iroleh",
-    "email": "missyou@gmail.com"
-  }
+  "token": "String"
 }
 ```
 
