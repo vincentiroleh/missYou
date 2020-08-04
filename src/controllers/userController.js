@@ -1,27 +1,31 @@
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
+const Auth0Strategy = require('passport-auth0');
 const User = require('../models/userModel');
 
 class UserController {
   static createUser(req, res) {
     const { name, email, password } = req.body;
 
-    const userData = {
+    const user = {
       name,
       email,
     };
 
-    User.register(userData, password, (err) => {
+    User.register(user, password, (err) => {
       if (err) {
         return res.status(400).json({
           status: 400,
           message: err.message,
         });
       }
+      const token = jwt.sign({ user }, process.env.SECRET, {
+        expiresIn: '168h',
+      });
       return passport.authenticate('local')(req, res, () => res.status(200).json({
         status: 200,
         message: 'Account created successfully',
-        user: userData,
+        token,
       }));
     });
   }
