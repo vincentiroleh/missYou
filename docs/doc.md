@@ -28,9 +28,10 @@ API documentation for missYou project
 
 All URLs referenced in the documentation have the following base:
 
-`https://missyou-api.herokuapp.com`  **Active ✅**
+`https://missyou-api.azurewebsites.net` **Active ✅**
 
-`https://missyou-api.azurewebsites.net`
+<!-- `https://missyou-api.herokuapp.com`  **Active ✅** -->
+
 
 The missYou REST API is served over HTTPS To ensure data privacy, un-encrypted HTTP is not supported.
 
@@ -179,7 +180,6 @@ Represents user details.
   "status": 200,
   "message": "Roseline's memorial page created successfully",
   "data": {
-    "tributes": [],
     "_id": "5f1f046d65c44f93f2ba16b9",
     "firstname": "Roseline",
     "lastname": "Iroleh",
@@ -198,8 +198,11 @@ Represents user details.
     "about": "About the dead",
     "biography": "Bio of the dead",
     "user": "5f16fb29219785620757a14a",
-    "image": "https://res.cloudinary.com/aircell-agro/image/upload/v1595868268/svdlamkazp6uzlrfbbva.png",
-    "gallery": [],
+    "image": "URL",
+    "tributes": [String],
+    "photos": [String],
+    "videos": [String],
+    "audios": [String],
   }
 ```
 
@@ -411,7 +414,7 @@ Represents user details.
 
 **Add multiple photos to a Memorial:**
 
-Doesn't need Authorization, because guests can perform this operation, for security checks, please enable to use [Google reCAPTCHA integration](https://developers.google.com/recaptcha/intro)
+Doesn't need Authorization, because guests can perform this operation without logging in, for security checks, please enable to use [Google reCAPTCHA integration](https://developers.google.com/recaptcha/intro)
 
 `PUT` `/api/v1/auth/update-photos/id`
 
