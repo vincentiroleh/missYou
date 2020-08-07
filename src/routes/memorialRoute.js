@@ -1,6 +1,6 @@
 const memorialRoute = require('express').Router();
 const { verifyToken } = require('../middleware/AuthUser');
-const parser = require('../helpers/cloudinary');
+const parser = require('../helper/cloudinary');
 const memorialController = require('../controllers/memorialController');
 const galleryController = require('../controllers/galleryController');
 

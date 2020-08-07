@@ -1,6 +1,6 @@
 const userRouter = require('express').Router();
 const userController = require('../controllers/userController');
-const { signupValidator, loginValidator, validate } = require('../helpers/validator');
+const { signupValidator, loginValidator, validate } = require('../helper/validator');
 
 const authUrl = '/api/v1/auth/';
 
