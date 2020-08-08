@@ -44,7 +44,7 @@ class UserController {
           <small> 
             Kind Regards, <br>
             MissYou Team <br>
-            www.missyou.com
+            www.missyou.io
           </small>
       </p>
       `;

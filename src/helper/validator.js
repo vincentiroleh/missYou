@@ -29,6 +29,31 @@ const loginValidator = () => [
     .withMessage('password field cannot be empty'),
 ];
 
+const tributeValidator = () => [
+  body('title')
+    .not()
+    .isEmpty()
+    .trim()
+    .withMessage('Tribute title cannot be empty'),
+  body('name')
+    .not()
+    .isEmpty()
+    .trim()
+    .withMessage('You should have a name right?'),
+  body('tribute')
+    .not()
+    .isEmpty()
+    .trim()
+    .withMessage('You don\'t want to leave this empty'),
+];
+
+const photoValidator = () => [
+  body('name')
+    .not()
+    .isEmpty()
+    .trim()
+    .withMessage('You should have a name right?'),
+];
 const validate = (req, res, next) => {
   const errors = validationResult(req);
   if (errors.isEmpty()) {
@@ -46,5 +71,7 @@ const validate = (req, res, next) => {
 module.exports = {
   signupValidator,
   loginValidator,
+  tributeValidator,
+  photoValidator,
   validate,
 };
