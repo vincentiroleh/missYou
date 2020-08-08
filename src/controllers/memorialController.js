@@ -1,27 +1,31 @@
+/* eslint-disable consistent-return */
 /* eslint-disable no-param-reassign */
 /* eslint-disable no-underscore-dangle */
 const Memorial = require('../models/memorialModel');
 const User = require('../models/userModel');
+const mailer = require('../helper/mailer');
 
 class memorialController {
-  static createMemorial(req, res) {
+  static async createMemorial(req, res) {
     const id = { _id: req.body.userID };
     const value = { ...req.body, user: id, image: req.file.path };
 
-    User.findOne(id)
-      .then(() => Memorial.create(value).then((data) => {
-        res.status(200).json({
-          status: 200,
-          message: `${data.firstname}'s memorial page created successfully`,
-          data,
-        });
-      }))
-      .catch((err) => {
-        res.status(400).json({
-          status: 400,
-          message: err.message,
-        });
+    const user = await User.findOne(id);
+    if (user === null) {
+      return res.status(400).json({
+        message: 'User with the given id not found',
       });
+    }
+    return Memorial.create(value)
+      .then((data) => res.status(200).json({
+        status: 200,
+        message: `${data.firstname}'s memorial page created successfully`,
+        data,
+      }))
+      .catch((err) => res.status(400).json({
+        status: 400,
+        message: err.message,
+      }));
   }
 
   static getMemorials(req, res) {
@@ -42,23 +46,26 @@ class memorialController {
       });
   }
 
-  static getMemorial(req, res) {
+  static async getMemorial(req, res) {
     const id = { _id: req.params.id };
-    Memorial.findOne(id)
-      .populate('user')
-      .then((memorial) => {
-        res.status(200).json({
-          status: 200,
-          message: 'Memorial retrieved successfully',
-          memorial,
+    const memorial = await Memorial.findOne(id);
+    try {
+      if (memorial === null) {
+        return res.status(400).json({
+          message: 'Memorial with the given id does not exist',
         });
-      })
-      .catch((err) => {
-        res.status(400).json({
-          status: 400,
-          message: err.message,
-        });
+      }
+      res.status(200).json({
+        status: 200,
+        message: 'Memorial retrieved successfully',
+        memorial,
       });
+    } catch (error) {
+      res.status(400).json({
+        status: 400,
+        message: error,
+      });
+    }
   }
 
   static getUserMemorials(req, res) {
@@ -108,23 +115,50 @@ class memorialController {
       }));
   }
 
-  static updateTribute(req, res) {
+  static async updateTribute(req, res) {
     const id = { _id: req.params.id };
-    const values = { ...req.body, tributes: req.body.tribute };
-    Memorial.findOne(id)
-      .then((memorial) => {
-        const newTribute = values.tribute;
-        memorial.tributes.push(newTribute);
-        memorial.save(memorial);
-        res.status(200).json({
-          status: 200,
-          message: 'Tribute added successfully',
-          tribute: memorial.tributes,
+    const values = { ...req.body };
+    const memorial = await Memorial.findOne(id);
+    const user = await User.findOne({ _id: memorial.user });
+    try {
+      if (memorial === null) {
+        return res.status(400).json({
+          message: 'Memorial with the given id does not exist',
         });
-      }).catch((err) => res.status(400).json({
+      }
+      memorial.tributes.push(values);
+      memorial.save();
+      res.status(200).json({
+        status: 200,
+        message: 'Tribute added successfully',
+        tributes: memorial.tributes,
+      });
+      const message = `
+    <p> 
+      <p> 
+        ${values.name} has shared a tribute on <a href="www.missyou.io/memorial/${memorial.webAddress}"> ${memorial.firstname}'s Memorial Page</a>
+      </p>  
+      <p> 
+        <b> ${values.title} </b> <br> <br>
+
+        ${values.tribute}
+      </p>  
+      <p> 
+        <small> 
+          Kind Regards, <br>
+          MissYou Team <br>
+          www.missyou.io
+        </small>
+      </P>
+    </p>
+    `;
+      mailer(user.email, `New Tribute on ${memorial.firstname}'s Memorial Page`, message);
+    } catch (error) {
+      res.status(400).json({
         status: 400,
-        error: err.message,
-      }));
+        error: error.message,
+      });
+    }
   }
 }
 

@@ -435,7 +435,8 @@ Doesn't need Authorization, because guests can perform this operation without lo
 
 ```bash
 {
-  "photos" : File # multiple photos allowed
+  "photo": File, # Single photo
+  "name": String # name of guest adding photo
 }
 
 ```
@@ -447,12 +448,18 @@ Doesn't need Authorization, because guests can perform this operation without lo
 {
   "status": 200,
   "message": "Photo added successfully",
-  "photos": [String]
+  "photos": [ # returns an array of photos including the new added one
+    {
+      "_id": String,
+      "name": String,
+      "photo": String
+    },
+  ]
 }
 
 ```
 
-**Add multiple tributes to a Memorial:**
+**Add tributes to a Memorial:**
 
 Doesn't need Authorization, because guests can perform this operation, for security checks, please enable to use [Google reCAPTCHA integration](https://developers.google.com/recaptcha/intro)
 
@@ -467,7 +474,7 @@ Doesn't need Authorization, because guests can perform this operation, for secur
 
 ```bash
 {
-    "id": Number  # memorial id your wish to add photos
+    "id": Number  # memorial id your wish to add tribute to
 }
 ```
 
@@ -475,7 +482,9 @@ Doesn't need Authorization, because guests can perform this operation, for secur
 
 ```bash
 {
-  "tribute" : "String" # multiple photos allowed
+  "name": String,
+  "title": String,
+  "tribute": String
 }
 
 ```
@@ -484,10 +493,18 @@ Doesn't need Authorization, because guests can perform this operation, for secur
 *RESPONSE*
 
 ```bash
+
 {
   "status": 200,
   "message": "Tribute added successfully",
-  "tributes": [String]
+  "tributes": [
+    {
+      "_id": String,
+      "name": String,
+      "title": String,
+      "tribute": String
+    },
+  ]
 }
 
 ```
