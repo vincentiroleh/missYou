@@ -210,13 +210,8 @@ Represents user details.
 
 **Get all Memorials:**
 
-`GET` `/api/v1/auth/memorials`
+`GET` `/api/v1/memorials`
 
-**Request**
-
-*HEADERS*
-
-`Authorization:` Token
 
 *RESPONSE*
 
@@ -235,13 +230,8 @@ Represents user details.
 
 **Get a Memorial:**
 
-`GET` `/api/v1/auth/memorial/:id`
+`GET` `/api/v1/memorial/:id`
 
-**Request**
-
-*HEADERS*
-
-`Authorization:` Token
 
 *PARAMS*
 
