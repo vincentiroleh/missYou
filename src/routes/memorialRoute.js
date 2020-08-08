@@ -16,12 +16,10 @@ memorialRoute.post(
 
 memorialRoute.get(
   `${authUrl}memorials`,
-  verifyToken,
   memorialController.getMemorials,
 );
 memorialRoute.get(
   `${authUrl}memorial/:id`,
-  verifyToken,
   memorialController.getMemorial,
 );
 memorialRoute.get(
