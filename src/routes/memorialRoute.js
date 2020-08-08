@@ -6,6 +6,7 @@ const memorialController = require('../controllers/memorialController');
 const galleryController = require('../controllers/galleryController');
 
 const authUrl = '/api/v1/auth/';
+const url = '/api/v1/';
 
 memorialRoute.post(
   `${authUrl}create-memorial`,
@@ -15,11 +16,11 @@ memorialRoute.post(
 );
 
 memorialRoute.get(
-  `${authUrl}memorials`,
+  `${url}memorials`,
   memorialController.getMemorials,
 );
 memorialRoute.get(
-  `${authUrl}memorial/:id`,
+  `${url}memorial/:id`,
   memorialController.getMemorial,
 );
 memorialRoute.get(
