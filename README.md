@@ -76,7 +76,7 @@ Here's why:
 
 * [NodeJs](https://nodejs.org/en/)
 * [ExpressJs](https://expressjs.com)
-* [Auth0 Passport](http://www.passportjs.org)
+* [Passport](http://www.passportjs.org)
 * [Azure](https://azure.microsoft.com)
 * [MongoDB](https://www.mongodb.com)
 
