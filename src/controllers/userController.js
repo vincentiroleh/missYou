@@ -1,6 +1,5 @@
 const passport = require('passport');
 const jwt = require('jsonwebtoken');
-const mailer = require('../helper/mailer');
 const User = require('../models/userModel');
 
 class UserController {
@@ -19,40 +18,10 @@ class UserController {
           message: err.message,
         });
       }
-      const token = jwt.sign({ user }, process.env.SECRET, {
-        expiresIn: '168h',
-      });
-      const message = `
-      <p> 
-         <b> Dear ${user.name}, </b>
-
-          <p> 
-            Welcome to MissYou, and thank you for joining our community.
-          </p>
-
-          <p> 
-            Please make a note of your account login email: <br> 
-            ${user.email}
-          </p>
-          
-          <p> 
-            If you have any questions about our service, or need any assistance with your memorial, 
-            please feel free to contact us at <br> 
-            missyou@gmail.com.
-          </p>
-
-          <small> 
-            Kind Regards, <br>
-            MissYou Team <br>
-            www.missyou.io
-          </small>
-      </p>
-      `;
-      mailer(user.email, 'Welcome to MissYou', message);
       return passport.authenticate('local')(req, res, () => res.status(200).json({
         status: 200,
         message: 'Account created successfully',
-        token,
+        data: user,
       }));
     });
   }
@@ -62,7 +31,7 @@ class UserController {
       if (err) {
         return next(err);
       }
-      if (!user || user.role === 'Admin') {
+      if (!user) {
         return res.status(400).json({
           status: 400,
           message: 'failure',
