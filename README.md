@@ -75,9 +75,10 @@ Here's why:
 **Backend:** - [Github Repo](https://github.com/vincentiroleh/missYou)
 
 * [NodeJs](https://nodejs.org/en/)
-* [ExpressJs](https://expressjs.com/)
-* [Auth0 Passport](http://www.passportjs.org/)
-* [Azure](https://azure.microsoft.com/en-us/)
+* [ExpressJs](https://expressjs.com)
+* [Auth0 Passport](http://www.passportjs.org)
+* [Azure](https://azure.microsoft.com)
+* [MongoDB](https://www.mongodb.com)
 
 
 
@@ -178,6 +179,8 @@ Distributed under the MIT License. See [`LICENSE`](https://github.com/vincentiro
 * [Cloudinary](https://cloudinary.com)
 * [Azure](https://azure.microsoft.com)
 * [Vercel](https://vercel.com/)
+* [MongoDB](https://www.mongodb.com)
+* [Best-README-Template](https://github.com/othneildrew/Best-README-Template)
 
 
 <!-- MARKDOWN LINKS & IMAGES -->
