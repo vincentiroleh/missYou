@@ -249,11 +249,10 @@ Represents user details.
   "status": 200,
   "message": "Memorial retrieved successfully",
   "memorial": {
-    "tributes": [],
-    "_id": "5f187bdd06a01b7a9b2ac825",
+    "_id": String,
     "user": {
       "role": "Client",
-      "_id": "5f16fb29219785620757a14a",
+      "_id": String,
       "name": "Vincent Iroleh",
       "email": "irolehiroleh@gmail.com",
     },
@@ -273,8 +272,18 @@ Represents user details.
     "webAddress": "roseline-iroleh",
     "about": "About the dead",
     "biography": "Bio of the  dead",
-    "image": "https://res.cloudinary.com/aircell-agro/image/upload/v1595598923/coaoj7ql7yd1hclxwhp6.png",
-    "gallery": [],
+    "image": "URL",
+    "photos": [{
+      "_id": String,
+      "name": String,
+      "photo": "URL",
+    }],
+    "tributes": [{
+      "_id": "5f2eaa63fddbe393d96dfd64",
+      "name": String,
+      "title": String,
+      "tribute": String
+    }],
   }
 }
 
