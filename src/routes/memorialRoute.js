@@ -10,7 +10,6 @@ const url = '/api/v1/';
 
 memorialRoute.post(
   `${authUrl}create-memorial`,
-  verifyToken,
   parser().single('image'),
   memorialController.createMemorial,
 );
@@ -25,7 +24,6 @@ memorialRoute.get(
 );
 memorialRoute.get(
   `${authUrl}user-memorials`,
-  verifyToken,
   memorialController.getUserMemorials,
 );
 
