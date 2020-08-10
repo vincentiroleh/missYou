@@ -8,11 +8,18 @@ const LocalStrategy = require('passport-local').Strategy;
 const cors = require('cors');
 
 const cloudinary = require('cloudinary').v2;
-
-const app = express();
 require('dotenv').config();
 
+const app = express();
+
 app.use(cors());
+
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', 'GET,HEAD,OPTIONS,POST,PUT');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept, Authorization');
+  next();
+});
 
 const Router = require('./src/routes/index');
 const User = require('./src/models/userModel');
