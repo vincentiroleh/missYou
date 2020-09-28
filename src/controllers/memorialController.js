@@ -8,7 +8,7 @@ const mailer = require('../helper/mailer');
 class memorialController {
   static async createMemorial(req, res) {
     const id = { _id: req.body.userID };
-    const value = { ...req.body, user: id, image: req.file.path };
+    const value = { ...req.body, user: id }; // image: req.file.path
 
     const user = await User.findOne(id);
     if (user === null) {
@@ -94,7 +94,7 @@ class memorialController {
     })
       .then(() => res.status(200).json({
         status: 200,
-        message: 'Memorial Page updated successfully',
+        message: 'Details updated successfully',
       }))
       .catch((err) => res.status(404).json({
         status: 404,
