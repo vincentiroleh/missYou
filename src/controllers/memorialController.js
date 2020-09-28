@@ -11,6 +11,7 @@ class memorialController {
     const value = { ...req.body, user: id }; // image: req.file.path
 
     const user = await User.findOne(id);
+    if (!value.image) return res.json({message: 'Please upload a file'})
     if (user === null) {
       return res.status(400).json({
         message: 'User with the given id not found',
